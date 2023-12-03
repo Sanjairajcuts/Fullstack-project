@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Attempt</title>
+</head>
+<body>
+    <h2>Password Attempt</h2>
+    <form id="passwordForm">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="button" onclick="checkPassword()">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        // Set the correct password
+        const correctPassword = "123";
+
+        // Set the maximum number of attempts0
+        const maxAttempts = 3;
+
+        // Initialize the attempt counter
+        let attempts = 0;
+
+        function checkPassword() 
+        {
+            // Get the entered password
+            const enteredPassword = document.getElementById("password").value;
+9
+            // Check if the entered password is correct
+            if (enteredPassword === correctPassword) {
+                
+                alert (document.getElementById("result").innerText = "Password correct! Access granted.";)
+
+            } 
+            else {
+                attempts ++;
+                if (attempts < maxAttempts) {
+                    document.getElementById("result").innerText = `Incorrectpassword.${maxAttempts - attempts}attempt(s).remaining`;
+                } else {
+                    document.getElementById("result").innerText = "Maximum attempts reached. Access denied.";
+                    // Disable the submit button or take appropriate action after reaching the maximum attempts
+                    document.getElementById("passwordForm").querySelector("button").disabled = true;
+                }
+            }
+
+            // Optionally, you can clear the input field after each attempt
+            document.getElementById("password").value = " ";
+        }
+    </script>
+
+</body>
+</html>

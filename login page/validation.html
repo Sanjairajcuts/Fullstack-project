@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+        #message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password Validation</h2>
+    <label for="password">Password:</label>
+    <input type="password" id="password" oninput="validatePassword()">
+    <div id="message"></div>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById('password').value;
+            var message = document.getElementById('message');
+            var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+            if (strongRegex.test(password)) 
+            {
+                message.innerHTML = 'Strong password';
+                message.style.color = 'green';
+            } 
+            else {
+                message.innerHTML = 'Weak password. Please include at least one lowercase letter, one uppercase letter, one number, and one special character. It should be at least 8 characters long.';
+                message.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

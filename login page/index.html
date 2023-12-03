@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="wrapper">
+        <form action="" id="form">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" id="username" name="name" placeholder="username" required>
+                <i class='bx bx-user-circle'></i>
+                </div>
+            <div class="input-box">
+                <input type="password" id="password" name="pass" placeholder="password" required>
+                <i class='bx bx-lock'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember Me?</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn" id="login" onclick="validate()" >Login</button>
+            <div class="register-link">
+                <p>Don't have an account <a href="#">Sign Up</a></p>
+            </div>
+        </form>
+        <script>
+            var attempt=5; // Variable to count number of attempts.
+        // Below function Executes on click of login button.
+        function validate(){
+            while(attempt>=0)
+            {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if ( username == "sanjai" && password == "123")
+        {
+        alert("Login successfully");
+        window.location = "success.html"; // Redirecting to other page.
+        return false;
+        }
+        else{// Decrementing by one.
+            attempt--;
+        alert("You have left "+attempt+" attempt;");
+        break;
+        // Disabling fields after 3 attempts.
+        if( attempt == 0){
+        document.getElementById("username").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("submit").disabled = true;
+        return false;
+        }
+    }
+        }
+       }
+    </script>
+</body>
+</html>
